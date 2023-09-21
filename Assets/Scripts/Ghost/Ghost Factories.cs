@@ -3,7 +3,7 @@ public class SpiritFactory : IGhostFactory
 {
     public Ghost CreateGhost()
     {
-        return new BasicGhost();
+        return new Ghost();
     }
 }
 
@@ -12,7 +12,7 @@ public class PoltergeistFactory : IGhostFactory
 {
     public Ghost CreateGhost()
     {
-        return new Thrower(new BasicGhost());
+        return new Thrower(new Ghost());
     }
 }
 
@@ -21,7 +21,7 @@ public class BansheeFactory : IGhostFactory
 {
     public Ghost CreateGhost()
     {
-        return new Screamer(new BasicGhost());
+        return new Screamer(new Ghost());
     }
 }
 
@@ -30,7 +30,7 @@ public class DemonFactory : IGhostFactory
 {
     public Ghost CreateGhost()
     {
-        return new Aggressive( new Thrower(new BasicGhost()));
+        return new Aggressive( new Thrower(new Ghost()));
     }
 }
 
@@ -39,6 +39,6 @@ public class ShadeFactory : IGhostFactory
 {
     public Ghost CreateGhost()
     {
-        return new Shy(new Screamer(new BasicGhost()));
+        return new Shy(new Screamer(new Ghost()));
     }
 }

@@ -3,24 +3,35 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     private InputHandler inputHandler;
+    private GhostCreator creator;
 
-    private IGhostFactory demonFactory = new DemonFactory();
+    public Ghost ghost { get; private set; }
+    public GhostType ghostType { get; private set; }
 
     private void Awake()
     {
         inputHandler = new InputHandler();
+        creator = new GhostCreator();
     }
 
-    void Start()
+    private void Start()
     {
         inputHandler.OnStart();
-
-        Ghost ghost = demonFactory.CreateGhost();
-        ghost.Haunt();
     }
 
-    void Update()
+    private void Update()
     {
         inputHandler.OnUpdate();
+    }
+
+    public void CreateNewGhost(GhostType _ghostType)
+    {
+        ghost = creator.OrderGhost(_ghostType);
+        ghostType = _ghostType;
+    }
+
+    public void MakeGhostInteract()
+    {
+        ghost?.Haunt();
     }
 }

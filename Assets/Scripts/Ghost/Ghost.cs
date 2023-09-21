@@ -1,4 +1,9 @@
-public abstract class Ghost
+using UnityEngine;
+
+public class Ghost
 {
-    public abstract void Haunt();
+    public virtual void Haunt()
+    {
+        Debug.Log("Basic ghost haunting");
+    }
 }
