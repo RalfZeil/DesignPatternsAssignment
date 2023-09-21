@@ -13,7 +13,6 @@ public class InputHandler
 
         commandMap[KeyCode.Space] = new JumpCommand();
         commandMap[KeyCode.E] = new InteractCommand();
-        commandMap[KeyCode.H] = new HauntCommand();
     }
 
     public void OnUpdate()
