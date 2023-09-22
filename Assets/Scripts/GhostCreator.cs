@@ -1,33 +1,19 @@
+using System.Collections.Generic;
+
 public class GhostCreator
 {
-    private IGhostFactory factory;
+    private readonly Dictionary<GhostType, IGhostFactory> factories =
+        new Dictionary<GhostType, IGhostFactory>
+        {
+            { GhostType.spirit, new SpiritFactory() },
+            { GhostType.poltergeist, new PoltergeistFactory() },
+            { GhostType.banshee, new BansheeFactory() },
+            { GhostType.demon, new DemonFactory() },
+            { GhostType.shade, new ShadeFactory() }
+        };
 
     public Ghost OrderGhost(GhostType ghostType)
     {
-        switch (ghostType)
-        {
-            case GhostType.spirit:
-                factory = new SpiritFactory();
-                return  factory.CreateGhost();
-
-            case GhostType.poltergeist:
-                factory = new PoltergeistFactory();
-                return factory.CreateGhost();
-
-            case GhostType.banshee:
-                factory = new BansheeFactory();
-                return factory.CreateGhost();
-
-            case GhostType.demon:
-                factory = new DemonFactory();
-                return factory.CreateGhost();
-
-            case GhostType.shade:
-                factory = new ShadeFactory();
-                return factory.CreateGhost();
-
-            default:
-                return null;
-        }
+        return factories[ghostType].CreateGhost();
     }
 }

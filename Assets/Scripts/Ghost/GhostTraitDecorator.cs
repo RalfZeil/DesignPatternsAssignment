@@ -1,4 +1,4 @@
-public class GhostTraitDecorator : Ghost
+public abstract class GhostTraitDecorator : Ghost
 {
     protected Ghost ghost;
 
